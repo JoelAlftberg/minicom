@@ -147,6 +147,9 @@
     <Compile Include="kernel\include\task.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="kernel\scheduler.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="kernel\systick.c">
       <SubType>compile</SubType>
     </Compile>

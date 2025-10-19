@@ -28,5 +28,6 @@ Continued working on tcb and added the basics of the scheduler
 - planned implementation of binary heap for task ready list
 - scheduler() - added psuedo-code for the scheduler
 - task_delete() - added way to delete tasks
-- task_set_ready() - helper function to ready tasks and add them to heap
+- task_set_ready() - helper function to ready tasks and push them to ready list
+
 
