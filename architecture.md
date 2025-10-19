@@ -22,3 +22,11 @@ implemented:
 - task_tcb_t and task_status_t types
 
 
+## Log 2025-10-19
+Continued working on tcb and added the basics of the scheduler
+
+- planned implementation of binary heap for task ready list
+- scheduler() - added psuedo-code for the scheduler
+- task_delete() - added way to delete tasks
+- task_set_ready() - helper function to ready tasks and add them to heap
+

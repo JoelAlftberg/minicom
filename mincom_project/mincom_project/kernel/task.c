@@ -3,12 +3,7 @@
  *
  * Created: 2025-10-17 20:49:12
  *  Author: joela
- */ 
-#define MAX_TASKS 10
-
-task_tcb_t tasks[MAX_TASKS];
-
-task_tcb_t *free_task_head;
+ */
 
 void init_tcb(){
 
@@ -20,15 +15,15 @@ void init_tcb(){
 
 	tasks[MAX_TASKS - 1].next_free = NULL;
 
+	return;
 }
 
-task_tcb_t *create_task(uint8_t id, uint8_t priority, uint8_t *stack_base, uint8_t *stack_pointer){
+task_tcb_t *task_create(uint8_t id, uint8_t priority, uint8_t *stack_base, uint8_t *stack_pointer){
 	
 	task_tcb_t *tcb = free_task_head;
 
 	if(free_task_head != NULL){
 		free_task_head = tcb->next_free;
-		
 	}
 	else{
 		return NULL;	
@@ -43,4 +38,25 @@ task_tcb_t *create_task(uint8_t id, uint8_t priority, uint8_t *stack_base, uint8
 
 	return tcb;
 
+}
+
+
+void task_delete(uint8_t task_id){
+	
+	for(uint8_t i = 0; i < MAX_TASKS; i++){
+		
+		if(tasks[i].id == task_id){	
+			tasks[i].id = 0;
+			tasks[i].priority = 0;
+			tasks[i].stack_pointer = NULL;
+			tasks[i].wake_tick = 0;
+			tasks[i].status = FREE;
+			
+			tasks[i].next_free = free_task_head;
+			free_task_head = &tasks[i];
+		}
+		
+	}
+	
+	return;
 }
