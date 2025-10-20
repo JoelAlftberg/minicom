@@ -9,7 +9,6 @@
 #include "../include/gpio.h"
 #define NOP() __asm__ __volatile__("nop") // Define NOP instruction
 
-
 // Mapping for the arduino digital pins
 const pin_mapping_t arduino_mapping_digital[] = {
 	{ &PORTD, &DDRD, &PIND, 0},
@@ -34,14 +33,6 @@ const pin_mapping_t arduino_mapping_digital[] = {
 	{ &PORTC, &DDRC, &PINC, 5}
 };
 
-
-// Mapping for the arduino analog pins
-const pin_mapping_t arduino_mapping_analog[] = {
-
-};
-
-
-
 void gpio_set_direction(uint8_t pin_number, mode_t pin_mode){
 	 if (pin_mode == OUTPUT){
 		 *arduino_mapping_digital[pin_number].ddr |= (1 << arduino_mapping_digital[pin_number].bit);
@@ -51,7 +42,10 @@ void gpio_set_direction(uint8_t pin_number, mode_t pin_mode){
 	 }
 }
 
-void gpio_set_pullup(uint8_t pin_number, pullup_mode_t)
+// TODO: Add functionality for pull-up/pull-down
+void gpio_set_pullup(uint8_t pin_number, pullup_mode_t){
+    return;
+}
 
 // Reads the Input from the pin and checks if it's high or low
 uint8_t gpio_digital_read(uint8_t pin_number){
@@ -80,7 +74,6 @@ uint16_t gpio_analog_read(analog_pin_t pin_number){
 	return ADC;
 
 }
-
 
 void gpio_pulse(uint8_t pin){
 	gpio_digital_write(pin, HIGH);

@@ -30,4 +30,11 @@ Continued working on tcb and added the basics of the scheduler
 - task_delete() - added way to delete tasks
 - task_set_ready() - helper function to ready tasks and push them to ready list
 
+## Log 2025-10-20
+Worked on implementing binary heap as a priority queue for tasks
+
+- heap_pop()
+- heap_push()
+- heap_swap()
+
 
